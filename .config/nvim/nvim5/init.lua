@@ -1,0 +1,12 @@
+require("generals.plugged")
+require("generals.mappings")
+require("generals.options")
+require("generals.theme")
+
+require("plugins.blankline")
+require("plugins.bufferline")
+require("plugins.saga")
+require("plugins.lspinstall")
+require("plugins.nvimcmp")
+require("plugins.trouble")
+require("plugins.treesiter")
