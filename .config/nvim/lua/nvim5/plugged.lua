@@ -1,6 +1,6 @@
 local Plug = vim.fn['plug#']
 
-vim.call("plug#begin", '~/.config/nvim/autoload/plugged')
+vim.call("plug#begin", '~/.config/nvim/autoload/nvim5/')
 	Plug('folke/tokyonight.nvim', {branch = 'main'})
 
 	Plug('nvim-lua/plenary.nvim')
@@ -24,9 +24,13 @@ vim.call("plug#begin", '~/.config/nvim/autoload/plugged')
 
 	Plug('glepnir/lspsaga.nvim')
 
-	Plug('kabouzeid/nvim-lspinstall')
-
 	Plug('L3MON4D3/LuaSnip')
 
 	Plug('windwp/nvim-autopairs')
+
+	Plug('norcalli/nvim-colorizer.lua')
+
+	Plug('williamboman/nvim-lsp-installer')
+
+	Plug('mhartington/formatter.nvim')
 vim.call("plug#end")

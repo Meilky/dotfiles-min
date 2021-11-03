@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/autoload/plugged')
+call plug#begin('~/.config/nvim/autoload/nvim4')
 		" Theme
 		Plug 'ghifarit53/tokyonight-vim'
 		" Airline
