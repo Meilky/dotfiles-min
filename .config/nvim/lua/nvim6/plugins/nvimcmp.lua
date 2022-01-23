@@ -1,17 +1,21 @@
-local cmp = require('cmp')
+local luasnip = require("luasnip")
+local cmp = require("cmp")
+local lspkind = require('lspkind')
+
+require("luasnip.loaders.from_vscode").load()
 
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require('luasnip').lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end
 	},
-	sources = {
+	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'ultisnips' },
+		{ name = 'luasnip' },
+	}, {
 		{ name = 'path' },
-		{ name = 'buffer' },
-	},
+	}),
 	mapping = {
 		['<C-k>'] = cmp.mapping.scroll_docs(-4),
 		['<C-j>'] = cmp.mapping.scroll_docs(4),
@@ -21,44 +25,22 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		}),
-		['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-		['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if luasnip.expand_or_locally_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	},
-	symbol_map = {
-		Text = "T",
-		Method = "M",
-		Function = "F",
-		Constructor = "C",
-		Field = "F",
-		Variable = "V",
-		Class = "C",
-		Interface = "I",
-		Module = "M",
-		Property = "P",
-		Unit = "U",
-		Value = "V",
-		Enum = "E",
-		Keyword = "K",
-		Snippet = "S",
-		Color = "C",
-		File = "F",
-		Reference = "R",
-		Folder = "F",
-		EnumMember = "EM",
-		Constant = "C",
-		Struct = "S",
-		Event = "E",
-		Operator = "O",
-		TypeParameter = "TP"
-	},
-	preset = 'default',
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
 	formatting = {
-		format = require("lspkind").cmp_format({
+		format = lspkind.cmp_format({
 			with_text = true,
 			maxwidth = 50,
-			before = function (entry, vim_item)
-				return vim_item
-			end
-		})
-	}
+		}),
+	},
 })
+

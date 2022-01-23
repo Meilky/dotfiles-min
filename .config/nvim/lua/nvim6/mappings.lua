@@ -8,9 +8,6 @@ local rmap = function(mode, key, f)
 	remap(mode, key, f, default)
 end
 
--- yank till end of line
-rmap("n", "Y", "y$")
-
 -- Telescope mappings
 rmap("n", "<leader>ff", ":Telescope find_files<CR>")
 rmap("n", "<leader>fg", ":Telescope live_grep<CR>")
@@ -29,8 +26,8 @@ rmap("n", "<leader>gd", ":Lspsaga preview_definition<CR>")
 rmap("n", "<leader>ga", ":Lspsaga code_action<CR>")
 
 -- Buffer Line
-rmap("n", "<leader>bl", ":BufferLineCycleNext<CR>")
-rmap("n", "<leader>bk", ":BufferLineCyclePrev<CR>")
+rmap("n", "<leader>bh", ":BufferLineCycleNext<CR>")
+rmap("n", "<leader>bl", ":BufferLineCyclePrev<CR>")
 rmap("n", "<leader>bp", ":BufferLinePick<CR>")
 rmap("n", "<leader>b1", ":BufferLineGoToBuffer 1<CR>")
 rmap("n", "<leader>b2", ":BufferLineGoToBuffer 2<CR>")
