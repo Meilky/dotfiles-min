@@ -1,33 +1,50 @@
 return require('packer').startup(function(use)
+	-- Packer it self
+	use { 'wbthomason/packer.nvim'}
+
+	-- Theme
 	use { 'folke/tokyonight.nvim' }
 
+	-- Utils
 	use { 'nvim-lua/plenary.nvim' }
 	use { 'neovim/nvim-lspconfig' }
-
 	use { 'kyazdani42/nvim-web-devicons', opt = true }
 
+	-- Indent
 	use { 'lukas-reineke/indent-blankline.nvim' }
 
+	-- Snippets
 	use { 'L3MON4D3/LuaSnip' }
-	use { 'saadparwaiz1/cmp_luasnip' }
-	use { 'hrsh7th/cmp-nvim-lsp' }
-	use { 'hrsh7th/nvim-cmp' }
-	use { "hrsh7th/cmp-path" }
 	use { "rafamadriz/friendly-snippets" }
 
-	use { 'windwp/nvim-autopairs' }
-	use { 'norcalli/nvim-colorizer.lua' }
-	use { 'mhartington/formatter.nvim' }
+	-- Completion
+	use { 'saadparwaiz1/cmp_luasnip' }
+	use { "hrsh7th/cmp-path" }
+	use { 'hrsh7th/cmp-nvim-lsp' }
+	use { 'hrsh7th/nvim-cmp' }
 	use { 'onsails/lspkind-nvim' }
+	use { "folke/trouble.nvim" }
 
-	use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
+	-- Autopair
+	use { 'windwp/nvim-autopairs' }
+	-- Show colors
+	use { 'norcalli/nvim-colorizer.lua' }
+
+	-- Formating
+	use { 'mhartington/formatter.nvim' }
+
+	-- Telescope
+	use { 'nvim-telescope/telescope.nvim' }
+
+	-- Treesitter
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-	use { 'tami5/lspsaga.nvim', requires = { {'neovim/nvim-lspconfig'} } }
-
+	-- Vim buffer line
 	use { 'akinsho/bufferline.nvim' }
 
-	use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+	-- Vim line
+	use { 'nvim-lualine/lualine.nvim' }
 
-	use { 'williamboman/nvim-lsp-installer', requires = { {'neovim/nvim-lspconfig'} } }
+	-- Lsp installer
+	use { 'williamboman/nvim-lsp-installer' }
 end)

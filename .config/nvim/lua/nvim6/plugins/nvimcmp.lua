@@ -34,7 +34,7 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		border = { "", "", "", "", "", "", "", "" },
     },
 	formatting = {
 		format = lspkind.cmp_format({

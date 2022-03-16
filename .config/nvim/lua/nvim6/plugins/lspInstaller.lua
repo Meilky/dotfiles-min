@@ -1,17 +1,20 @@
 local lsp_installer = require("nvim-lsp-installer")
 
 local servers = {
-	"pyright",
+	"bashls",
 	"ccls",
+	"cmake",
+	"cssls",
+	"dockerls",
+	"emmet_ls",
+	"eslint",
+	"graphql",
+	"html",
 	"vimls",
 	"taplo",
 	"tsserver",
-	"cmake",
+	"pyright",
 	"jsonls",
-	"cssls",
-	"html",
-	"bashls",
-	"dockerls",
 	"rust_analyzer",
 	"sumneko_lua",
 	"yamlls"
@@ -25,11 +28,19 @@ for _, name in pairs(servers) do
 	end
 end
 
+local enhance_server_opts = {}
+
 lsp_installer.on_server_ready(function(server)
-    server:setup({
+	local opts = {
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		flags = {
 			debounce_text_changes = 150,
 		}
-	})
+	};
+
+	if enhance_server_opts[server.name] then
+		enhance_server_opts[server.name](opts)
+	end
+
+    server:setup(opts);
 end)
