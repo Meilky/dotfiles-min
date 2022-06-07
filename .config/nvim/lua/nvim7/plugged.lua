@@ -47,4 +47,7 @@ return require('packer').startup(function(use)
 
 	-- Lsp installer
 	use { 'williamboman/nvim-lsp-installer' }
+		
+	-- Git integration
+        use { 'lewis6991/gitsigns.nvim', tag = 'release' }
 end)
