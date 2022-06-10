@@ -1,5 +1,5 @@
 return require('packer').startup(function(use)
-	-- Packer it self
+	-- Packer
 	use { 'wbthomason/packer.nvim' }
 
 	-- Theme
@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
 
 	-- Snippets
 	use { 'L3MON4D3/LuaSnip' }
-	use { "rafamadriz/friendly-snippets" }
+	use { 'rafamadriz/friendly-snippets' }
 
 	-- Completion
 	use { 'saadparwaiz1/cmp_luasnip' }
@@ -23,10 +23,13 @@ return require('packer').startup(function(use)
 	use { 'hrsh7th/cmp-nvim-lsp' }
 	use { 'hrsh7th/nvim-cmp' }
 	use { 'onsails/lspkind-nvim' }
+
+	-- Trouble
 	use { "folke/trouble.nvim" }
 
 	-- Autopair
 	use { 'windwp/nvim-autopairs' }
+
 	-- Show colors
 	use { 'norcalli/nvim-colorizer.lua' }
 
@@ -39,15 +42,19 @@ return require('packer').startup(function(use)
 	-- Treesitter
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-	-- Vim buffer line
-	use { 'akinsho/bufferline.nvim', branch = 'main' }
-
-	-- Vim line
-	use { 'nvim-lualine/lualine.nvim' }
+	-- Lines
+	use { 'ojroques/nvim-hardline' }
+	use { 'ojroques/nvim-bufbar' }
 
 	-- Lsp installer
 	use { 'williamboman/nvim-lsp-installer' }
-		
-	-- Git integration
-        use { 'lewis6991/gitsigns.nvim', tag = 'release' }
+
+	-- Function signature
+	use { "ray-x/lsp_signature.nvim" }
+
+	-- Git signs
+	use { 'lewis6991/gitsigns.nvim' }
+
+	-- Buffer delete
+	use { 'ojroques/nvim-bufdel' }
 end)

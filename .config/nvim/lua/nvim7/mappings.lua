@@ -8,22 +8,24 @@ local rmap = function(mode, key, f)
 	remap(mode, key, f, default)
 end
 
--- Telescope mappings
 rmap("n", "<leader>ff", ":Telescope find_files<CR>")
-rmap("n", "<leader>fr", ":Telescope lsp_references<CR>")
-rmap("n", "<leader>fi", ":Telescope lsp_implementations<CR>")
-rmap("n", "<leader>fd", ":Telescope lsp_definitions<CR>")
-rmap("n", "<leader>fa", ":Telescope lsp_code_actions<CR>")
 rmap("n", "<leader>fb", ":Telescope buffers<CR>")
 
--- LspSaga mappings
 rmap("n", "<leader>gg", ":lua vim.lsp.buf.hover()<CR>")
 rmap("n", "<leader>gr", ":lua vim.lsp.buf.rename()<CR>")
+rmap("n", "<leader>ga", ":lua vim.lsp.buf.code_action()<CR>")
+rmap("n", "<leader>fr", ":lua vim.lsp.buf.references()<CR>")
+rmap("n", "<leader>fd", ":lua vim.lsp.buf.definition()<CR>")
+rmap("n", "<leader>fi", ":lua vim.lsp.buf.implementation()<CR>")
 
--- Buffer Line
-rmap("n", "<leader>bl", ":BufferLineCycleNext<CR>")
-rmap("n", "<leader>bh", ":BufferLineCyclePrev<CR>")
-
--- Formatter
 rmap("n", "<leader>FL", ":lua vim.lsp.buf.formatting()<CR>")
 rmap("n", "<leader>FF", ":Format<CR>")
+
+rmap("n", "<leader>ws", ":split<CR>")
+rmap("n", "<leader>wv", ":vsplit<CR>")
+rmap("n", "<leader>wh", "<C-W>h")
+rmap("n", "<leader>wj", "<C-W>j")
+rmap("n", "<leader>wk", "<C-W>k")
+rmap("n", "<leader>wl", "<C-W>l")
+
+rmap("n", "<leader>bd", ":BufDel<CR>")
