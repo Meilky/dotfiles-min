@@ -1,5 +1,3 @@
-require("trouble").setup(
-	{
-		icons = false
-	}
-)
+require("trouble").setup({
+	icons = false
+})

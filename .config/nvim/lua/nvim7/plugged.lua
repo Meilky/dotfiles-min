@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
 	use { "hrsh7th/cmp-path" }
 	use { 'hrsh7th/cmp-nvim-lsp' }
 	use { 'hrsh7th/nvim-cmp' }
+	use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
 	use { 'onsails/lspkind-nvim' }
 
 	-- Trouble
@@ -48,9 +49,6 @@ return require('packer').startup(function(use)
 
 	-- Lsp installer
 	use { 'williamboman/nvim-lsp-installer' }
-
-	-- Function signature
-	use { "ray-x/lsp_signature.nvim" }
 
 	-- Git signs
 	use { 'lewis6991/gitsigns.nvim' }

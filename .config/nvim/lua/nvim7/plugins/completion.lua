@@ -10,24 +10,22 @@ local has_words_before = function()
 end
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end
-	},
 	view = {
-		entries = 'native'
-	},
-	window = {
-		documentation = false,
+		entries = 'custom'
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
+		{ name = 'nvim_lsp_signature_help' },
 	}, {
 		{ name = 'path' },
 	}),
-	mapping = {
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	mapping = cmp.mapping.preset.insert({
 		['<C-k>'] = cmp.mapping.scroll_docs(-4),
 		['<C-j>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
@@ -36,9 +34,7 @@ cmp.setup({
 			select = true,
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_locally_jumpable() then
+			if luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
@@ -46,18 +42,18 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
 	formatting = {
 		format = lspkind.cmp_format({
 			maxwidth = 50,
 			mode = "symbol_text",
-			menu = ({
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
-				latex_symbols = "[Latex]",
-			})
 		}),
 	},
 })
